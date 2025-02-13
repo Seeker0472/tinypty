@@ -1,0 +1,9 @@
+!/src/*
+!*.cpp
+!*.cc
+
+.cache/clangd/index
+build
+myapp
+compile_commands.json
+*.txt
