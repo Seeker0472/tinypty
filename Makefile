@@ -15,7 +15,8 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)  	$(CC) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(@D) 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run:$(TARGET)
 	./myapp
