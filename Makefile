@@ -48,13 +48,25 @@ $(ARCHIVE): $(OBJS)
 
 archive:$(ARCHIVE)
 
+install:$(TARGET_SO)
+	install -d /usr/local/lib
+	install -m 0755 $(TARGET_SO) /usr/local/lib/
+	ldconfig
+
+uninstall:
+	rm /usr/local/lib/lib$(NAME).so
+	ldconfig
+
 test-so:clean $(TARGET_SO)
 	gcc -I./inc/ -o ./build/tinypty src/main.c -L./build -ltinypty && LD_LIBRARY_PATH=./build:$LD_LIBRARY_PATH ./build/tinypty
 test-a:clean $(ARCHIVE)
 	gcc -I./inc/ -o ./build/tinypty src/main.c -L./build -ltinypty && ./build/tinypty
+test-install:clean 
+	@mkdir -p ./build/
+	gcc -I./inc/ -o ./build/tinypty src/main.c  -ltinypty  && ./build/tinypty
 test:test-a test-so
 
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET) $(TARGET_SO) $(ARCHIVE)
 
-.PHONY: all clean archive test
+.PHONY: all clean archive test install
