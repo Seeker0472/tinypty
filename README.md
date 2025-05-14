@@ -2,6 +2,13 @@
 
 A minimum example of how to use pty(Pseudoterminal) in linux.
 
+## dependency
+因为用到了xterm
+你可能需要安装x11-app
+```shell
+sudo apt install x11-apps -y
+```
+
 ## Usage
 
 原理：
