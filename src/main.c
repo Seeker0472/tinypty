@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "pty.h"
+#include "tinypty.h"
 
 char buf[100];
 int main(){
