@@ -15,6 +15,9 @@ int init_pty() {
     perror("openpty failed");
     exit(EXIT_FAILURE);
   }
+  char  cmd[512]={0};
+  sprintf(cmd, "xterm -hold -e bash -c \"screen %s; echo Press any key to exit; read\" &", slave_name);
+  system(cmd);
   // set no-block flag
   int flags = fcntl(master_fd, F_GETFL, 0);
   if (flags == -1)
