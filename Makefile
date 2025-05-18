@@ -36,7 +36,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(Q) $(CC) $(CFLAGS) -c $< -o $@
 
 run:$(TARGET)
-	./$(OBJ_DIR)/$(TARGET)
+	./$(TARGET)
 
 $(TARGET_SO): $(OBJS)
 	@ echo "+ SO $^ \n     -> `pwd`$@"
